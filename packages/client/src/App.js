@@ -13,7 +13,7 @@ function App() {
     setUser(null);
 
     try {
-      const json = await request(`/api/user`);
+      const json = await request('/api/user');
 
       if (json.data?.platformUserId) {
         setUser(json.data);
@@ -35,7 +35,7 @@ function App() {
       return <a href="/connect">Connect</a>;
     }
 
-    return <div>Logged in user: {user.platformUserId}</div>;
+    return <div>Logged in as: {user.platformUserId}</div>;
   }
 
   useEffect(() => {
