@@ -1,39 +1,48 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+
+import { request } from './fetch';
+
 import './App.css';
-import { useEffect } from 'react';
 
 function App() {
-  async function getProducts() { 
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+
+  async function getUser() {
+    setLoading(true);
+    setUser(null);
+
     try {
-      const products = await fetch('/api/ecommerce/products');
-      console.log('Products', products);
+      const json = await request(`/api/user`);
+
+      if (json.data?.platformUserId) {
+        setUser(json.data);
+      }
     } catch (e) {
-      console.error('Could not load products', e);
+      console.error('Could not load user', e);
+      setUser(null);
     }
+
+    setLoading(false);
+  }
+
+  function renderBody() {
+    if (loading) {
+      return <p>Loading...</p>;
+    }
+
+    if (!user) {
+      return <a href="/connect">Connect</a>;
+    }
+
+    return <div>Logged in user: {user.platformUserId}</div>;
   }
 
   useEffect(() => {
-    getProducts();
+    getUser();
   }, []);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <div className="App">{renderBody()}</div>;
 }
 
 export default App;

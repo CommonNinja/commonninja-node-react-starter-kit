@@ -1,1 +1,2 @@
-# Common Ninja NodeJS & ReactJS Starter Kit
+# Common Ninja Starter Kit
+# NodeJS & ReactJS
