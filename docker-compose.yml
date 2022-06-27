@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  base:
+    image: cn:base    
+    build: 
+      dockerfile: docker/Dockerfile.base    
+      context: .     
+  server:
+    container_name: server-api
+    image: cn:base
+    env_file:
+      - './packages/server/.dev.env'
+      - './packages/server/.env'
+    working_dir: /app/packages/server
+    command: "yarn dev"
+    expose: 
+      - "4010"
+    ports:
+      - 4010:4010
+    networks:
+      - default
+    volumes:
+      - ./packages/server/src/server:/app/server
+      - client-build:/app/packages/server/client/build
+  client:
+    image: cn:base
+    container_name: client-app
+    working_dir: /app/packages/client
+    command: "yarn start"
+    env_file:
+      - './packages/client/.env'
+    environment:
+      REACT_APP_PROXY: "http://server-api:4010"
+    expose: 
+      - "3000"
+    ports:
+      - 3000:3000
+    networks:
+      - default
+    volumes:
+      - client-build:/app/packages/client/build
+      - ./packages/client/src:/app/packages/client/src
+
+volumes:
+  client-build:
+
+networks: 
+  default: 
+    external: true
+    name: cn-app-network

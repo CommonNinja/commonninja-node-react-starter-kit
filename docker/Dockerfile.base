@@ -1,0 +1,16 @@
+FROM node:lts
+
+WORKDIR /app
+
+COPY .yarn .yarn
+COPY .yarnrc.yml .yarnrc.yml
+COPY package.json .
+COPY yarn.lock .
+
+# packages
+COPY /packages/server/package.json /app/packages/server/package.json
+COPY /packages/client/package.json /app/packages/client/package.json
+
+RUN yarn
+
+ADD . .
