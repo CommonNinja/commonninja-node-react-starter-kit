@@ -3,7 +3,7 @@ import './App.css';
 import { useEffect } from 'react';
 
 function App() {
-  async function getProducts() {
+  async function getProducts() { 
     try {
       const products = await fetch('/api/ecommerce/products');
       console.log('Products', products);

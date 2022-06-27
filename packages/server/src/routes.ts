@@ -27,7 +27,7 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
 // Authentication
 router.get('/connect', async (req: Request, res: Response) => {
 	// Get a new Common Ninja instance
-	const client = getCommonNinjaClient(req);
+	const client = getCommonNinjaClient(req); 
 
 	// Get authentication url for platform
 	const url = client.auth.getConnectUrl();

@@ -1,11 +1,14 @@
 version: "3.9"
 
 services:
-  server:
+  base:
+    image: cn:base    
     build: 
       dockerfile: docker/Dockerfile.base    
-      context: .
+      context: .     
+  server:
     container_name: cn-app-server
+    image: cn:base
     env_file:
       - './packages/server/.dev.env'
       - './packages/server/.env'
@@ -21,9 +24,7 @@ services:
       - ./packages/server/src/server:/app/server
       - client-build:/app/packages/server/client/build
   client:
-    build: 
-      dockerfile: docker/Dockerfile.base    
-      context: .
+    image: cn:base
     container_name: cn-app-client
     working_dir: /app/packages/client
     command: "yarn start"

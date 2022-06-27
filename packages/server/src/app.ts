@@ -6,7 +6,7 @@ import bodyParser from 'body-parser';
 
 import router from './routes';
 
-const port = parseInt(process.env.PORT || '3000');
+const port = parseInt(process.env.PORT || '4000');
 const app = express();
  
 // Parse cookies
