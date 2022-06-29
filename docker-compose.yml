@@ -29,9 +29,8 @@ services:
     working_dir: /app/packages/client
     command: "yarn start"
     env_file:
+      - './packages/client/.dev.env'
       - './packages/client/.env'
-    environment:
-      REACT_APP_PROXY: "http://cn-app-server:4010"
     expose: 
       - "3000"
     ports:

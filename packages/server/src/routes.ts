@@ -29,8 +29,8 @@ router.get('/connect', async (req: Request, res: Response) => {
 	// Get a new Common Ninja instance
 	const client = getCommonNinjaClient(req); 
 
-	// Get authentication url for platform
-	const url = client.auth.getConnectUrl();
+	// Get connect url for authentication
+	const url = client.auth.getConnectUrl(req.query.redirectUrl as string);
 
 	// Redirect to authentication url
 	res.redirect(url);

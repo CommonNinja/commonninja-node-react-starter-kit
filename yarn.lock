@@ -1499,11 +1499,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commonninja/node-sdk@npm:^1.1.16":
-  version: 1.1.16
-  resolution: "@commonninja/node-sdk@npm:1.1.16"
+"@commonninja/node-sdk@npm:^1.1.18":
+  version: 1.1.18
+  resolution: "@commonninja/node-sdk@npm:1.1.18"
   dependencies:
-    "@commonninja/types": ^1.2.32
+    "@commonninja/types": ^1.2.51
     axios: ^0.26.0
     bunyan: ^1.8.12
     bunyan-debug-stream: ^2.0.0
@@ -1512,19 +1512,19 @@ __metadata:
     express: ^4.17.3
     http-proxy-middleware: ^2.0.6
     path: ^0.12.7
-  checksum: 343c8b89be4efe2603a7bad74565541f1596c8f2908c500e633b587021a34486da6d596c400d72163740fac5b069d8b4d9db5b01d01afb9284b53ba397e38788
+  checksum: 5c63c297343cfacf768a1e4d412dc0abbbe790a35c0f8096fc87c2f5792856046b5f60cb5b7cbae6a51501891058a80e276be712f57b9a9a58e97a5594843720
   languageName: node
   linkType: hard
 
-"@commonninja/types@npm:^1.2.32":
-  version: 1.2.49
-  resolution: "@commonninja/types@npm:1.2.49"
+"@commonninja/types@npm:^1.2.51":
+  version: 1.2.51
+  resolution: "@commonninja/types@npm:1.2.51"
   dependencies:
     bunyan: ^1.8.12
     bunyan-debug-stream: ^2.0.0
     dotenv: ^6.2.0
     path: ^0.12.7
-  checksum: d20537a09163fd916c298ebc27a17f37d982b8b4c22c7492400d1be3adfd5c7596439d2f917e7e0efe339db25ffc31dfb915de9af50614694753af3042496705
+  checksum: 925eb4dca6c63972d7092f6e2550a153516fbad90ebe1edca73425e152fe431ebc1ac68ff86eccab0d3d52e7369bd01479a50c5305ac2547de57cb337c3aba4c
   languageName: node
   linkType: hard
 
@@ -11985,7 +11985,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "server-app@workspace:packages/server"
   dependencies:
-    "@commonninja/node-sdk": ^1.1.16
+    "@commonninja/node-sdk": ^1.1.18
     "@types/cookie-parser": ^1.4.2
     "@types/cors": latest
     "@types/express": ^4.17.9

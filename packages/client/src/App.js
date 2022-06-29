@@ -4,6 +4,8 @@ import { request } from './fetch';
 
 import './App.css';
 
+const { REACT_APP_PROXY = '' } = process.env;
+
 function App() {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
@@ -32,7 +34,15 @@ function App() {
     }
 
     if (!user) {
-      return <a href="/connect">Connect</a>;
+      return (
+        <a
+          href={`${REACT_APP_PROXY}/connect?redirectUrl=${encodeURIComponent(
+            window.location.href,
+          )}`}
+        >
+          Connect
+        </a>
+      );
     }
 
     return <div>Logged in as: {user.platformUserId}</div>;
