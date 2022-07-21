@@ -9,6 +9,15 @@ const { REACT_APP_PROXY = '' } = process.env;
 function App() {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [products, setProducts] = useState([]);
+
+  async function getProducts() {
+    const json = await request('/api/ecommerce/products');
+    const {
+      data: { items },
+    } = json;
+    setProducts(items);
+  }
 
   async function getUser() {
     setLoading(true);
@@ -45,14 +54,42 @@ function App() {
       );
     }
 
-    return <div>Logged in as: {user.platformUserId}</div>;
+    return (
+      <div>
+        Logged in as: {user.platformUserId} from {user.platform}
+      </div>
+    );
   }
+
+  useEffect(() => {
+    if (user) {
+      getProducts();
+    }
+  }, [user]);
 
   useEffect(() => {
     getUser();
   }, []);
 
-  return <div className="App">{renderBody()}</div>;
+  return (
+    <div className="App">
+      {renderBody()}
+      {user && products.length && (
+        <ul>
+          {products.map((product) => (
+            <li key={`p-${product.id}`}>
+              {product.images && product.images.length && (
+                <div>
+                  <img src={product.images[0]} alt="product" />
+                </div>
+              )}
+              {product.title}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 }
 
 export default App;
