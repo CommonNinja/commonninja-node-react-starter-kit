@@ -21,7 +21,8 @@ services:
     networks:
       - default
     volumes:
-      - ./packages/server/src/server:/app/server
+      - ./packages/server/src:/app/packages/server/src
+      - ./packages/server/nodemon.json:/app/packages/server/nodemon.json
       - client-build:/app/packages/server/client/build
   client:
     image: cn:base
