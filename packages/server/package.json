@@ -13,16 +13,17 @@
   ],
   "scripts": {
     "start": "node ./dist/app.js",
-    "dev": "nodemon src/app.ts",
+    "dev": "nodemon ./src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p .",
-    "clean": "rimraf dist/*",
-    "prebuild": "npm run clean"
+    "build:watch": "yarn run build --watch",
+    "clean": "rimraf \"dist/*\"",
+    "prod": "yarn run start"
   },
   "author": "Common Ninja",
   "license": "ISC",
   "dependencies": {
-    "@commonninja/node-sdk": "^1.1.18",
+    "@commonninja/node-sdk": "^1.1.22",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
