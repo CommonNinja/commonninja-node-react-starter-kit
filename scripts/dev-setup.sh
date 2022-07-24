@@ -19,4 +19,4 @@ yarn prepare
 docker network create "cn-app-network"
 
 # build the base image
-docker-compose build base
+docker-compose build --no-cache
